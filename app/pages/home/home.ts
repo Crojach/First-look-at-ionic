@@ -4,7 +4,7 @@ import {Page} from 'ionic-angular';
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
-  constructor() {
+    constructor() {
 
-  }
+    }
 }

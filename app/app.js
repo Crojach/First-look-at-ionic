@@ -11,21 +11,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ionic_angular_1 = require('ionic-angular');
 var ionic_native_1 = require('ionic-native');
 var home_1 = require('./pages/home/home');
+var todo_component_1 = require('./pages/todo/todo.component');
 var MyApp = (function () {
-    function MyApp(platform) {
+    function MyApp(app, platform, menu) {
+        this.app = app;
+        this.platform = platform;
+        this.menu = menu;
         this.rootPage = home_1.HomePage;
-        platform.ready().then(function () {
+        this.initializeApp();
+        // set our app's pages
+        this.pages = [
+            { title: 'Home page', component: home_1.HomePage },
+            { title: 'Todo list', component: todo_component_1.Todo }
+        ];
+    }
+    MyApp.prototype.initializeApp = function () {
+        this.platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             ionic_native_1.StatusBar.styleDefault();
         });
-    }
+    };
+    MyApp.prototype.openPage = function (page) {
+        // close the menu when clicking a link from the menu
+        this.menu.close();
+        // navigate to the new page if it is not the current page
+        var nav = this.app.getComponent('nav');
+        nav.setRoot(page.component);
+    };
     MyApp = __decorate([
         ionic_angular_1.App({
             templateUrl: 'build/app.html',
             config: {} // http://ionicframework.com/docs/v2/api/config/Config/
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.Platform])
+        __metadata('design:paramtypes', [ionic_angular_1.IonicApp, ionic_angular_1.Platform, ionic_angular_1.MenuController])
     ], MyApp);
     return MyApp;
 }());
