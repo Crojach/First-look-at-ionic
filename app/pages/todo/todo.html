@@ -6,8 +6,8 @@
 </ion-navbar>
 
 <ion-content>
-  <input type="text" [(ngModel)]="newTodo" />
-  <button (click)="addToList(newTodo)"></button>
+  <!--<input type="text" [(ngModel)]="newTodo" />-->
+  <button (click)="showNewTodoPrompt()"></button>
   <ion-list>
     <div ion-item *ngFor="#todo of todoList, #i = index" (click)="showDetails(todo)">
       {{todo.title}} <button danger (click)="deleteTodo(i)">Delete</button>

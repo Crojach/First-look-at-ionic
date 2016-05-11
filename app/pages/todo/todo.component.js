@@ -45,6 +45,34 @@ var Todo = (function () {
         });
         this.nav.present(actionSheet);
     };
+    Todo.prototype.showNewTodoPrompt = function () {
+        var _this = this;
+        var prompt = ionic_angular_1.Alert.create({
+            title: 'New todo',
+            message: "Enter a name for a new task",
+            inputs: [
+                {
+                    name: 'title',
+                    placeholder: 'Title'
+                },
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    handler: function (data) {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Save',
+                    handler: function (data) {
+                        _this.addToList(data.title);
+                    }
+                }
+            ]
+        });
+        this.nav.present(prompt);
+    };
     Todo = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/todo/todo.html'

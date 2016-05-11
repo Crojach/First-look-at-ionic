@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams, ActionSheet} from 'ionic-angular';
+import {Page, NavController, NavParams, ActionSheet, Alert} from 'ionic-angular';
 
 @Page({
     templateUrl: 'build/pages/todo/todo.html'
@@ -22,7 +22,7 @@ export class Todo {
     }
 
     deleteTodo(index: number) {
-        this.showDeletePrompt(index);        
+        this.showDeletePrompt(index);
     }
 
     showDeletePrompt(index: number) {
@@ -38,7 +38,7 @@ export class Todo {
                     text: 'No',
                     role: 'cancel',
                     handler: () => {
-                        
+
                     }
                 }
             ]
@@ -46,4 +46,31 @@ export class Todo {
         this.nav.present(actionSheet);
     }
 
+    showNewTodoPrompt() {
+        let prompt = Alert.create({
+            title: 'New todo',
+            message: "Enter a name for a new task",
+            inputs: [
+                {
+                    name: 'title',
+                    placeholder: 'Title'
+                },
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    handler: data => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Save',
+                    handler: data => {
+                        this.addToList(data.title)
+                    }
+                }
+            ]
+        });
+        this.nav.present(prompt)
+    }
 }
