@@ -19,8 +19,8 @@ var Todo = (function () {
                 isDone: false
             }];
     }
-    Todo.prototype.addToList = function (title) {
-        this.todoList.push({ title: title, priority: "black", isDone: false });
+    Todo.prototype.addToList = function (title, priority) {
+        this.todoList.push({ title: title, priority: priority, isDone: false });
     };
     Todo.prototype.deleteTodo = function (index) {
         this.showDeletePrompt(index);
@@ -55,6 +55,10 @@ var Todo = (function () {
                     name: 'title',
                     placeholder: 'Title'
                 },
+                {
+                    name: 'priority',
+                    placeholder: 'Priority'
+                },
             ],
             buttons: [
                 {
@@ -66,7 +70,7 @@ var Todo = (function () {
                 {
                     text: 'Save',
                     handler: function (data) {
-                        _this.addToList(data.title);
+                        _this.addToList(data.title, data.priority);
                     }
                 }
             ]

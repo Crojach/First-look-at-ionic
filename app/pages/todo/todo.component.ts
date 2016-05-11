@@ -17,8 +17,8 @@ export class Todo {
         isDone: false
     }];
 
-    addToList(title: string) {
-        this.todoList.push({ title: title, priority: "black", isDone: false });
+    addToList(title: string, priority: string) {
+        this.todoList.push({ title: title, priority: priority, isDone: false });
     }
 
     deleteTodo(index: number) {
@@ -55,6 +55,10 @@ export class Todo {
                     name: 'title',
                     placeholder: 'Title'
                 },
+                 {
+                    name: 'priority',
+                    placeholder: 'Priority'
+                },
             ],
             buttons: [
                 {
@@ -66,7 +70,7 @@ export class Todo {
                 {
                     text: 'Save',
                     handler: data => {
-                        this.addToList(data.title)
+                        this.addToList(data.title, data.priority)
                     }
                 }
             ]
