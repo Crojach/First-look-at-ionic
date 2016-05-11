@@ -7,10 +7,10 @@
 
 <ion-content>
   <input type="text" [(ngModel)]="newTodo" />
-  <button (click)="addToList(newTodo)"/>
+  <button (click)="addToList(newTodo)"></button>
   <ion-list>
-    <div ion-item *ngFor="#todo of todoList" (click)="showDetails(todo)">
-      {{todo.title}}
+    <div ion-item *ngFor="#todo of todoList, #i = index" (click)="showDetails(todo)">
+      {{todo.title}} <button danger (click)="deleteTodo(i)">Delete</button>
       </div>
   </ion-list>
 </ion-content>

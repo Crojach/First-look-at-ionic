@@ -20,4 +20,8 @@ export class Todo {
     addToList(title: string) {
         this.todoList.push({ title: title, priority: "black", isDone: false });
     }
+    
+    deleteTodo(index: number){
+        this.todoList.splice(index,1);
+    }
 }

@@ -22,6 +22,9 @@ var Todo = (function () {
     Todo.prototype.addToList = function (title) {
         this.todoList.push({ title: title, priority: "black", isDone: false });
     };
+    Todo.prototype.deleteTodo = function (index) {
+        this.todoList.splice(index, 1);
+    };
     Todo = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/todo/todo.html'
