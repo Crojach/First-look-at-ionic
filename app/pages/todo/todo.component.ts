@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams, ActionSheet, Alert,Modal} from 'ionic-angular';
+import {Page, NavController, NavParams, ActionSheet, Alert, Modal, Toast} from 'ionic-angular';
 import {TodoModal} from './todoModal.component';
 
 @Page({
@@ -34,6 +34,7 @@ export class Todo {
                     text: 'Yes',
                     handler: () => {
                         this.todoList.splice(index, 1);
+                        this.showDeleteMessage();
                     }
                 }, {
                     text: 'No',
@@ -79,8 +80,21 @@ export class Todo {
         this.nav.present(prompt)
     }
 
+    showDeleteMessage() {
+        let toast = Toast.create({
+            message: 'Task has been deleted',
+            duration: 3000
+        });
+
+        toast.onDismiss(() => {
+            console.log('Dismissed toast');
+        });
+
+        this.nav.present(toast);
+    }
+
     showDetails(selectedTodo: any) {
-        let modal = Modal.create(TodoModal, {data : selectedTodo});
+        let modal = Modal.create(TodoModal, { data: selectedTodo });
         this.nav.present(modal)
     }
 

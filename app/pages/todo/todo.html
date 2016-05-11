@@ -9,8 +9,8 @@
   <!--<input type="text" [(ngModel)]="newTodo" />-->
   <button (click)="showNewTodoPrompt()"></button>
   <ion-list>
-    <div ion-item [style.color]="todo.priority" *ngFor="#todo of todoList, #i = index" (click)="showDetails(todo)">
-      {{todo.title}} <button danger (click)="deleteTodo(i)">Delete</button>
+    <div ion-item [style.color]="todo.priority" *ngFor="#todo of todoList, #i = index" >
+      {{todo.title}} <button danger (click)="deleteTodo(i)">Delete</button> <button secondary (click)="showDetails(todo)">Show Details</button>
       </div>
   </ion-list>
 </ion-content>

@@ -35,6 +35,7 @@ var Todo = (function () {
                     text: 'Yes',
                     handler: function () {
                         _this.todoList.splice(index, 1);
+                        _this.showDeleteMessage();
                     }
                 }, {
                     text: 'No',
@@ -77,6 +78,16 @@ var Todo = (function () {
             ]
         });
         this.nav.present(prompt);
+    };
+    Todo.prototype.showDeleteMessage = function () {
+        var toast = ionic_angular_1.Toast.create({
+            message: 'Task has been deleted',
+            duration: 3000
+        });
+        toast.onDismiss(function () {
+            console.log('Dismissed toast');
+        });
+        this.nav.present(toast);
     };
     Todo.prototype.showDetails = function (selectedTodo) {
         var modal = ionic_angular_1.Modal.create(todoModal_component_1.TodoModal, { data: selectedTodo });
