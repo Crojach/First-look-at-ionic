@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_angular_1 = require('ionic-angular');
+var todoModal_component_1 = require('./todoModal.component');
 var Todo = (function () {
     function Todo(nav, params) {
         this.nav = nav;
@@ -76,6 +77,10 @@ var Todo = (function () {
             ]
         });
         this.nav.present(prompt);
+    };
+    Todo.prototype.showDetails = function (selectedTodo) {
+        var modal = ionic_angular_1.Modal.create(todoModal_component_1.TodoModal, { data: selectedTodo });
+        this.nav.present(modal);
     };
     Todo = __decorate([
         ionic_angular_1.Page({

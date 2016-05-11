@@ -1,4 +1,5 @@
-import {Page, NavController, NavParams, ActionSheet, Alert} from 'ionic-angular';
+import {Page, NavController, NavParams, ActionSheet, Alert,Modal} from 'ionic-angular';
+import {TodoModal} from './todoModal.component';
 
 @Page({
     templateUrl: 'build/pages/todo/todo.html'
@@ -55,7 +56,7 @@ export class Todo {
                     name: 'title',
                     placeholder: 'Title'
                 },
-                 {
+                {
                     name: 'priority',
                     placeholder: 'Priority'
                 },
@@ -77,4 +78,10 @@ export class Todo {
         });
         this.nav.present(prompt)
     }
+
+    showDetails(selectedTodo: any) {
+        let modal = Modal.create(TodoModal, {data : selectedTodo});
+        this.nav.present(modal)
+    }
+
 }
