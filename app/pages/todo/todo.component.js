@@ -23,7 +23,27 @@ var Todo = (function () {
         this.todoList.push({ title: title, priority: "black", isDone: false });
     };
     Todo.prototype.deleteTodo = function (index) {
-        this.todoList.splice(index, 1);
+        this.showDeletePrompt(index);
+    };
+    Todo.prototype.showDeletePrompt = function (index) {
+        var _this = this;
+        var actionSheet = ionic_angular_1.ActionSheet.create({
+            title: 'Are you sure you want to delete this item?',
+            buttons: [
+                {
+                    text: 'Yes',
+                    handler: function () {
+                        _this.todoList.splice(index, 1);
+                    }
+                }, {
+                    text: 'No',
+                    role: 'cancel',
+                    handler: function () {
+                    }
+                }
+            ]
+        });
+        this.nav.present(actionSheet);
     };
     Todo = __decorate([
         ionic_angular_1.Page({
