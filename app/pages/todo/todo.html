@@ -5,4 +5,12 @@
   <ion-title>Menu</ion-title>
 </ion-navbar>
 
-Your list here!
+<ion-content>
+  <input type="text" [(ngModel)]="newTodo" />
+  <button (click)="addToList(newTodo)"/>
+  <ion-list>
+    <div ion-item *ngFor="#todo of todoList" (click)="showDetails(todo)">
+      {{todo.title}}
+      </div>
+  </ion-list>
+</ion-content>

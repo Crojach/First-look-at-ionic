@@ -13,7 +13,15 @@ var Todo = (function () {
     function Todo(nav, params) {
         this.nav = nav;
         this.params = params;
+        this.todoList = [{
+                title: "Easy",
+                priority: "black",
+                isDone: false
+            }];
     }
+    Todo.prototype.addToList = function (title) {
+        this.todoList.push({ title: title, priority: "black", isDone: false });
+    };
     Todo = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/todo/todo.html'

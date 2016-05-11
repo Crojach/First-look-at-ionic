@@ -6,6 +6,18 @@ import {Page, NavController, NavParams} from 'ionic-angular';
 
 export class Todo {
     constructor(private nav: NavController, private params: NavParams) {
-        
+
+    }
+    
+    newTodo: string;
+
+    todoList: Array<{ title: string, priority: string, isDone: boolean }> = [{
+        title:"Easy",
+        priority: "black",
+        isDone: false
+    }];
+
+    addToList(title: string) {
+        this.todoList.push({ title: title, priority: "black", isDone: false });
     }
 }

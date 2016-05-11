@@ -10,7 +10,7 @@ import {Todo} from './pages/todo/todo.component';
 })
 export class MyApp {
   rootPage: any = HomePage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(
     private app: IonicApp,
